@@ -3,7 +3,7 @@ import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as compression from "compression";
 
-import Database from './DB/database';
+import Database from './db/database';
 import valuesRouter from "./router/valuesRouter";
 import productRouter from "./router/productsRouter";
 

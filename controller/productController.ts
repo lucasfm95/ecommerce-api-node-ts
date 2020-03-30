@@ -1,6 +1,6 @@
-import ProductRepository from "../DB/repositories/productRepository";
+import ProductRepository from "../db/repositories/productRepository";
 import Helper from "../utils/helper";
-import ProductEntity from "../DB/entities/productEntity";
+import ProductEntity from "../db/entities/productEntity";
 import ProductModel from "../models/productModel";
 
 class ProductController {
