@@ -1,5 +1,5 @@
 import * as HttpStatus from "http-status";
-import Helper from "../infra/helper";
+import Helper from "../utils/helper";
 
 
 class ValuesController {
@@ -7,7 +7,7 @@ class ValuesController {
   async get(req, res) {
     try {
       let response: string[] = ["value1", "value2"];
-      Helper.sendResponse(res, HttpStatus.OK, response);
+      //Helper.sendResponse(res, HttpStatus.OK, response);
     } catch (error) {
       console.error(error);
     }
@@ -20,7 +20,7 @@ class ValuesController {
     try {
       const _id = req.params.id;
       let response = `your id: ${_id}`;
-      Helper.sendResponse(res, HttpStatus.OK, response);
+      //Helper.sendResponse(res, HttpStatus.OK, response);
 
     } catch (error) {
       console.error(error);
@@ -51,7 +51,7 @@ class ValuesController {
     try {
       const _id = req.params.id;
       let response = `your id: ${_id}`;
-      Helper.sendResponse(res, HttpStatus.OK, response);
+      //Helper.sendResponse(res, HttpStatus.OK, response);
       
     } catch (error) {
       console.error(error);

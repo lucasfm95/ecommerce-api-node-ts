@@ -1,19 +1,24 @@
 import * as mongoose from 'mongoose';
+import ProductSchema from '../schemas/productSchema';
 import ProductEntity from '../entities/productEntity';
 
 class ProductRepository{
-    private model;
+    private schema;
 
     constructor(){
-        this.model = mongoose.model('Product', ProductEntity);
+        this.schema = mongoose.model<ProductEntity>('Product', ProductSchema);
     }
 
-    async getAll(){
-        return this.model.find({});
+    async getAll(): Promise<ProductEntity[]>{
+        return this.schema.find({});
     }
 
-    async insert(product){
-        return this.model.create(product);
+    async getById(_id): Promise<ProductEntity> {
+        return this.schema.find({id: _id});
+    }
+
+    async insert(product: ProductEntity){
+        return this.schema.create(product);
     }
 }
 

@@ -1,7 +1,7 @@
 import * as mongoose from "mongoose";
 
 class Database {
-    private DB_URI = 'mongodb://127.0.0.1:27017/ecommerce';
+    private DB_URI: string = 'mongodb://127.0.0.1:27017/ecommerce';
     private DB_CONNECTION;
 
     constructor() { }
@@ -11,7 +11,7 @@ class Database {
         this.logger(this.DB_URI);
     }
 
-    logger(uri) {
+    logger(uri: string) {
         this.DB_CONNECTION = mongoose.connection;
         this.DB_CONNECTION.on('connected', () => console.log(`Moogose is connected in ${uri}`));
         this.DB_CONNECTION.on('error', error => console.error.bind(console, `Connection Error: ${error}`));

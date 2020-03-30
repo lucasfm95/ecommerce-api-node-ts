@@ -2,9 +2,10 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as compression from "compression";
-import Database from './DB/database';
 
-import newsRouter from "./router/newsRouter";
+import Database from './DB/database';
+import valuesRouter from "./router/valuesRouter";
+import productRouter from "./router/productsRouter";
 
 class Startup {
   public app: express.Application;
@@ -45,10 +46,9 @@ class Startup {
       res.send({ versao: "0.0.1" });
     });
 
-
     //To call your route
-    this.app.use("/", newsRouter);
-
+    this.app.use("/", valuesRouter);
+    this.app.use("/", productRouter);
   }
 }
 

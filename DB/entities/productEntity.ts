@@ -1,18 +1,12 @@
 import * as mongoose from 'mongoose';
 
-const ProductEntity = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    creteadDate:{
-        type: Date,
-        default: Date.now
-    }
-});
+class ProductEntity extends mongoose.Document { 
+    
+    title: string;
+    description: string;
+    brand: string;
+    createDate: Date;
+    active: boolean;
+}
 
 export default ProductEntity;
