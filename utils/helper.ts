@@ -2,16 +2,20 @@ import * as HttpStatus from "http-status";
 
 class Helper {
 
-  sendResponseOkObjectResult(request, data: object) {
-    request.status(HttpStatus.OK).json({ result: data });
+  sendResponseOkObjectResult(response, data: object): void {
+    response.status(HttpStatus.OK).json({ result: data });
   };
 
-  sendResponseOkResult(request, message: string = null) {
-    request.status(HttpStatus.OK).json({ message: message });
+  sendResponseOkResult(response, message: string = null): void {
+    response.status(HttpStatus.OK).json({ message: message });
   };
 
-  SendResponseBadResquest(request, message: string = null){
-    request.status(HttpStatus.BAD_REQUEST).json({ message: message });
+  sendResponseBadResquest(response, message: string = null): void{
+    response.status(HttpStatus.BAD_REQUEST).json({ error: message });
+  }
+
+  sendResponseNoContent(response): void{
+    response.status(HttpStatus.NO_CONTENT).json();
   }
 }
 

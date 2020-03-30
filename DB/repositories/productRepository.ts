@@ -13,8 +13,8 @@ class ProductRepository{
         return this.schema.find({});
     }
 
-    async getById(_id): Promise<ProductEntity> {
-        return this.schema.find({id: _id});
+    async getById(id): Promise<ProductEntity> {
+        return this.schema.findById(id);
     }
 
     async insert(product: ProductEntity){

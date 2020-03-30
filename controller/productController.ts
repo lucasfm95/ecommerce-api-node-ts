@@ -11,21 +11,25 @@ class ProductController {
 
             Helper.sendResponseOkObjectResult(response, products);
         } catch (error) {
-            console.error(error);
-            Helper.SendResponseBadResquest(response, error);
+            console.error(error.message);
+            Helper.sendResponseBadResquest(response, error.message);
         }
     }
 
     async getById(request, response) {
         try{
-            let _id = request.params.id;
+            let id = request.params.id;
 
-            let product: ProductEntity = await ProductRepository.getById(_id);
+            let product: ProductEntity = await ProductRepository.getById(id);
 
-            Helper.sendResponseOkObjectResult(response, product);
+            if(product){
+                Helper.sendResponseOkObjectResult(response, product);
+            } else{
+                Helper.sendResponseNoContent(response);
+            }
         } catch(error){
-            console.error(error);
-            Helper.SendResponseBadResquest(response, error);
+            console.error(error.message);
+            Helper.sendResponseBadResquest(response, error.message);
         }
     }
 
@@ -42,10 +46,10 @@ class ProductController {
 
             await ProductRepository.insert(entity);
 
-            Helper.sendResponseOkResult(response, "Inserido com sucesso");
-        } catch (error) {
-            console.error(error);
-            Helper.SendResponseBadResquest(response, error);
+            Helper.sendResponseOkResult(response, "Inserido produto com sucesso");
+        } catch (error ) {
+            console.error(error.message);
+            Helper.sendResponseBadResquest(response, error.message);
         }
     }
 }
