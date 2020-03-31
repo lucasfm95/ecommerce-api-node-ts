@@ -6,6 +6,8 @@ import * as compression from "compression";
 import Database from './db/database';
 import valuesRouter from "./router/valuesRouter";
 import productRouter from "./router/productsRouter";
+import authRouter from "./router/authRouter";
+import Auth from "./utils/auth";
 
 class Startup {
   public app: express.Application;
@@ -43,8 +45,13 @@ class Startup {
   //routes
   routes() {
     this.app.route("/").get((req, res) => {
-      res.send({ versao: "0.0.1" });
+      res.send({ version: "0.0.1" });
     });
+
+    this.app.use("/", authRouter);
+
+    //Add token validation 
+    this.app.use(Auth.validate);
 
     //To call your route
     this.app.use("/", valuesRouter);
