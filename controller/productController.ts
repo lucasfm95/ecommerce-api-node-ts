@@ -52,6 +52,11 @@ class ProductController {
             Helper.sendResponseBadResquest(response, error.message);
         }
     }
+
+    hello() {
+        return 'Hello World!';
+    }
+      
 }
 
 export default new ProductController(); 
